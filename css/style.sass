@@ -1,0 +1,448 @@
+@import "../fonts/font-face.css"
+$mainLight: #fc6744
+$main: #ff5c36
+$textLight: #626262
+$text: #000
+$grey: #d3d3d3
+
+//media query sizes
+$size1: 120rem  //1920 "16/9"
+$size2: 84.375rem  //1350 "5/4"
+$size3: 60rem  //960 "8/9"
+$size4: 39rem  //720 "2/3"
+$size5: 20rem  //360 "1/3"
+$size6: 1rem  //360 "1/3"
+
+// media query creator function
+@mixin aspect-ratio($max, $min)
+  @media (min-width: $min) and (max-width: $max)
+    @content
+
+
+// used to make left and right padding
+@mixin content-padding($top, $bottom)
+  padding: $top 8.75rem $bottom 8.75rem
+  @include aspect-ratio($size2, $size3)
+    padding: $top 6.25rem $bottom 6.25rem
+  @include aspect-ratio($size3, $size4)
+    padding: $top 4.375rem $bottom 4.375rem
+  @include aspect-ratio($size4, $size5)
+    padding: $top 3.125rem $bottom 3.125rem
+  @include aspect-ratio($size5, $size6)
+    padding: $top 1.875rem $bottom 1.875rem
+
+
+*
+  font-family: 'Open Sans', serif
+
+html, body
+  margin: 0
+  padding: 0
+.section
+  width: 100%
+  @include content-padding(9.375rem, 9.375rem)
+  box-sizing: border-box
+  position: relative
+  display: flex
+  flex-direction: column
+  &:nth-child(odd)
+    background: #fbfbfb
+  header
+    @include content-padding(2rem ,2rem)
+    top: 0
+    height: 3.125rem
+    display: flex
+    align-items: center
+    .logo
+      font-size: 2.3125rem
+      font-weight: 600
+      color: rgba($text, 0.7)
+      &:first-letter
+        color: rgba($mainLight, 0.7)
+      border: 0.2rem solid rgba($text, 0.6)
+      width: max-content
+      padding: 0 0.5rem
+      border-radius: 0.12rem
+    .bars
+      all: unset
+      cursor: pointer
+      margin-left: auto
+      justify-self: flex-end
+      width: auto
+      height: 1.7rem
+      display: flex
+      flex-direction: column
+      justify-content: space-around
+      opacity: 0.6
+      div
+        height: 0.25rem
+        width: 1.875rem
+        background: $text
+
+
+  &.first
+    padding: 0
+    height: 100vh
+    background:
+      image: url("../img/1st background.jpg")
+      size: cover
+      position: top center
+    .form
+      box-sizing: border-box
+      width: 23.125rem
+      background: white
+      position: absolute
+      display: flex
+      flex-direction: column
+      left: 9.375rem
+      @include aspect-ratio($size2, $size3)
+        left: 6.25rem
+      @include aspect-ratio($size3, $size4)
+        left: 4.375rem
+      @include aspect-ratio($size4, $size5)
+        left: 3.125rem
+      @include aspect-ratio($size5, $size6)
+        left: 1.875rem
+
+      bottom: -1rem
+      padding:
+        top: 1.3rem
+        right: 2.1875rem
+        bottom: 1.1rem
+        left: 2.1875rem
+      border-radius: 2px
+      box-shadow: 0 0 3.375rem 0 rgba($text, 0.2)
+      form
+        display: flex
+        flex-direction: column
+        margin-top: 2rem
+        input, textarea
+          all: unset
+          width: 100%
+          border-bottom: 0.0625rem solid rgba($text, 0.2)
+          margin-bottom: 1.2rem
+        input
+          padding-bottom: 0.2rem
+        button
+          width: 100%
+          color: white
+          background: $mainLight
+          box-shadow: none
+          i
+            margin-left: 0.625rem
+      h3
+        all: unset
+        align-self: center
+        font-size: 1.18rem
+        opacity: 0.9
+        font-weight: 600
+        color: $text
+        span
+          color: $mainLight
+
+
+.title
+  all: unset
+  text-align: center
+  font-size: 3rem
+  font-weight: 600
+  color: rgba($text, 0.94)
+  span
+    color: rgba($main, 0.94)
+  &.first
+    margin-bottom: 0.5rem
+    color: rgba($textLight, 0.94)
+    span
+      color: rgba($mainLight, 0.94)
+
+.description
+  margin: 0 auto
+  text-align: center
+  font-size: 1rem
+  font-weight: 400
+  color: rgba($text, 0.6)
+  width: 70%
+  @include aspect-ratio($size3, $size6)
+    width: 100%
+
+article
+  display: flex
+  flex-wrap: wrap
+  width: 100%
+  justify-content: space-around
+  margin-top: 6rem
+
+.cards
+  .card
+    width: 15.625rem
+    height: 15.625rem
+    color: white
+    position: relative
+    padding: 1rem
+    margin: 1.4rem
+    display: flex
+    flex-direction: column
+    align-items: center
+    background: #4eb2f7
+    &:nth-child(2)
+      background: #c049f8
+    &:nth-child(3)
+      background: #817eff
+    &:nth-child(4)
+      background: #f74770
+      i
+        transform: rotateZ(-15deg)
+
+    i
+      font-size: 2.9rem
+      margin-top: 2rem
+    h4
+      font-size: 1.2rem
+      font-weight: 400
+      margin-bottom: 0
+    p
+      font-size: 0.9rem
+      text-align: center
+    button
+      position: absolute
+      bottom: -1.5625rem
+
+
+.button
+  all: unset
+  height: 3.125rem
+  border-radius: 1.625rem
+  box-shadow: 0 0 0.5rem 0 rgba($text, 0.2)
+  color: $text
+  text-align: center
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  background: white
+  width: 15.625rem
+
+.gallery
+  img
+    width: 20rem
+    height: 20rem
+    margin: 0.9375rem
+
+.services
+  display: flex
+  flex-direction: row
+  @include aspect-ratio($size3, $size6)
+    flex-direction: column
+  .icons
+    display: flex
+    flex-direction: column
+    width: 6.25rem
+    flex: 1
+    margin-right: 3rem
+    @include aspect-ratio($size3, $size6)
+      flex-direction: row
+      width: 100%
+    .icon
+      border-radius: 0.125rem
+      background: white
+      box-shadow: 0 0 0.15rem 0 rgba($text, 0.15)
+      width: 6.25rem
+      height: 5.5rem
+      display: flex
+      justify-content: center
+      align-items: center
+      margin: 0.25rem
+      &:hover
+        box-shadow: 0 0 1.2rem 0 rgba($text, 0.15)
+      img
+        width: 55%
+        margin-top: 1rem
+        margin-left: 1rem
+  .text
+    flex: 3
+    h3
+      font-weight: 400
+      font-size: 1.8rem
+      margin: 1rem 0
+      opacity: 0.75
+    hr
+      margin-left: 0
+      border: unset
+      text-align: left
+      background: $main
+      width: 3rem
+      height: 0.1875rem
+    p
+      opacity: 0.6
+  .image
+    flex: 1
+    height: 23.75rem
+    img
+      height: 23.75rem
+    @include aspect-ratio($size3, $size6)
+      margin-top: 1rem
+
+.team
+  .member
+    width: 21.25rem
+    height: 26.25rem
+    margin: 0.5rem 0.5rem 3.5rem 0.5rem
+    position: relative
+    background:
+      size: cover
+      position: center
+    .name
+      border-radius: 0.125rem
+      background-color: white
+      box-shadow: 0 0.375rem 0.9375rem 0 rgba($text, 0.15)
+      position: absolute
+      bottom: -3rem
+      width: 15.625rem
+      height: 5.6875rem
+      left: 2.7rem
+      display: flex
+      flex-direction: column
+      color: rgba($text, 0.7)
+      text-align: center
+      h4
+        margin:
+          top: 0.6rem
+          bottom: 0
+        font-size: 1.875rem
+        font-weight: 600
+      p
+        font-size: 0.9375rem
+        margin: 0.2rem 0
+
+.slider
+  position: relative
+  min-height: 17rem
+  .keen-slider
+    z-index: 4
+  .buttons
+    margin-top: 1rem
+    position: absolute
+    z-index: 2
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    button
+      all: unset
+      position: relative
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 50%
+      background-color: white
+      box-shadow: 0 0.1875rem 0.8125rem 0 rgba($text, 0.15)
+      width: 3rem
+      height: 3rem
+      cursor: pointer
+      &:hover
+        background: $main
+        color: white
+      &:first-child
+        left: -2.5rem
+      &:last-child
+        left: 2.5rem
+
+.slide_item
+  padding: 3rem 0.6rem 0
+  box-sizing: border-box
+  display: flex
+  align-items: flex-start
+  .client
+    border-radius: 0.0625rem
+    border: 0.0625rem solid white
+    background-color: rgb(255, 255, 255)
+    box-shadow: 0 0 1.625rem 0 rgba($text, 0.1)
+    box-sizing: border-box
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    position: relative
+    padding-top: 4rem
+    &:hover
+      border: 0.0625rem solid rgba($text, 0.2)
+    img
+      width: 6rem
+      height: 6rem
+      position: absolute
+      top: -3rem
+    p
+      font-size: 1.0625rem
+      &.comment
+        font-family: "Source Sans Pro", serif
+        color: rgba($text, 0.7)
+        text-align: center
+        opacity: 0.7
+        padding: 0 0.7rem
+      i
+        color: #ffef3b
+        &.inactive
+          color: rgba($text, 0.5)
+
+
+.dots
+  display: flex
+  justify-content: center
+  margin-top: 1rem
+  @include aspect-ratio($size4, $size6)
+    visibility: hidden
+  .dot
+    all: unset
+    border-radius: 0.125rem
+    background-color: rgba($text, 0.2)
+    left: 40.5625rem
+    top: 347.875rem
+    width: 1.125rem
+    height: 0.375rem
+    margin: 0 0.125rem
+    cursor: pointer
+    &.dot--active
+      background-color: $main
+
+.partners
+  background-color: rgb(251, 251, 251)
+  overflow: hidden
+  height: 12.5rem
+  box-sizing: border-box
+  padding: 4.375rem 0
+  display: flex
+  justify-content: center
+  img
+    margin: 0 1rem
+    height: 2rem
+    opacity: 0.2
+
+footer
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 2rem 0
+  background-color: rgb(247, 247, 247)
+  .copyright
+    margin-top: 2rem
+    display: flex
+    div
+      display: flex
+      justify-content: center
+      align-items: center
+      font-size: 1.2rem
+      color: white
+      margin: 0 0.625rem
+      border-radius: 50%
+      background-color: rgb(211, 211, 211)
+      width: 3.125rem
+      height: 3.125rem
+      cursor: pointer
+      &:hover
+        background: $mainLight
+    p
+      margin-left: 0.625rem
