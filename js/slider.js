@@ -1,4 +1,3 @@
-import KeenSlider from "keen-slider"
 const slider = new KeenSlider("#my-keen-slider", {
   slidesPerView: 2,
   created: function (instance) {
